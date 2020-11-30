@@ -45,6 +45,7 @@ const countryList = [
 	{ id: "ZW", name: "Zimbabwe" }
 ]
 export default {
+  props: ['userInfo'],
   components:{
     vSelect
   },
@@ -59,12 +60,10 @@ export default {
     }
   },
   mounted() {
+    this.userInfoHandler(this.userInfo)
     EventBus.$on('userInfo', payload => {
       this.userInfoHandler(payload);
     });
-  },
-  beforeDestroy() {
-    EventBus.$off('userInfo', this.userInfoHandler);
   },
   methods: {
     checkForm: function (e) {
@@ -82,9 +81,14 @@ export default {
         .then(response => console.log(response))
       console.log("payload", payload);
     },
-    userInfoHandler(payload) {
-      this.name = payload.name;
-      this.email = payload.email;
+    userInfoHandler(userInfo) {
+      if(userInfo != null) {
+        this.name = userInfo.name;
+        this.email = userInfo.email;
+      } else {
+        this.name = this.userInfo.name;
+        this.email = this.userInfo.email;
+      }
     },
   }
 }

@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
-    <Header />
+    <Header @route="route" />
     <div class="main">
-      <router-view />
+      <HomePage v-if="page === 'Home'" />
+      <About v-if="page === 'About'" />
+      <ContactUs v-if="page === 'Contact'" :userInfo="userInfo" />
     </div>
     <Footer />
   </div>
@@ -11,11 +13,34 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import HomePage from './views/HomePage.vue';
+import About from './views/About.vue';
+import ContactUs from './views/ContactUs.vue';
+import { EventBus } from './event-bus.js';
 
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    HomePage,
+    About,
+    ContactUs
   },
+  data() {
+    return {
+      userInfo: {},
+      page: "Home"
+    }
+  },
+  mounted() {
+    EventBus.$on('userInfo', userInfo => {
+      this.userInfo = {...userInfo};
+    }); 
+  },
+  methods: {
+    route (e) {
+      this.page = e;
+    }
+  }
 }
 </script>

@@ -1,15 +1,17 @@
 <template>
   <header>
     <div class="logo centered">
-      <i class="far fa-snowflake"></i>
+      <a class="link" href="javascript:" @click="onLinkClick('Home')">
+        <i class="far fa-snowflake"></i>
+      </a>
     </div>
     <Link />
     <div class="companyName centered">
-      <router-link class="link" to="/">{{$route.name}}</router-link>
+      <div>{{pageName}}</div>
     </div>
     <nav class="nav centered">
-      <router-link class="link" to="/about">{{$t('Nasıl yapıyoruz?')}}</router-link>
-      <router-link class="link" to="/contact">{{$t('İletişime Geç')}}</router-link>
+      <a class="link" href="javascript:" @click="onLinkClick('About')">{{$t('Nasıl yapıyoruz?')}}</a>
+      <a class="link" href="javascript:" @click="onLinkClick('Contact')">{{$t('İletişime Geç')}}</a>
     </nav>
       <Login v-if="userName === null" />
       <div class="centered locale" v-else>{{userName}}</div>
@@ -35,7 +37,7 @@ export default {
   },
   data() {
     return {
-      pageName:'',
+      pageName:this.$t('Anasayfa'),
       userName:null,
       email:null
     }
@@ -60,6 +62,10 @@ export default {
         EventBus.$emit('userInfo', userInfo);
       }
     },
+    onLinkClick (e) {
+      this.$emit('route', e);
+      this.pageName=this.$t(e);
+    }
   }
 }
 </script>
