@@ -1,0 +1,140 @@
+body{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  color:#383838;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.footer {
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(231, 210, 142);
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(197, 227, 255);
+    font-weight: 600;
+  }
+  .main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#383838;
+    padding:4px;
+    text-decoration:none;
+  }
+  a:hover {
+    opacity: .80;
+  }
+  .form {
+    width:100%;
+  }
+  .form-item > input,select, textarea {
+    width:100%;
+  }
+  .submit {
+    margin-top: 1rem;
+    text-align: end;
+  }
+}
+
+@media screen and (min-width: 600px) {
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#383838;
+  padding:20px;
+  text-decoration:none;
+}
+a:hover {
+  opacity: .80;
+}
+
+h2 {
+  text-align: center;
+}
+
+.content {
+  max-width:460px;
+  padding:24px;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  height:70px;
+  display: flex;
+  background-color: rgb(197, 227, 255);
+  font-weight: 600;
+}
+
+.form {
+  width:60%;
+}
+
+.form-item {
+  margin-top:1rem;
+}
+
+.submit {
+  margin-top: 1rem;
+  text-align: end;
+}
+
+label {
+  display: block;
+}
+
+.form-item > input,select, textarea {
+  min-height: 24px;
+  border: 1px solid rgba(60,60,60,.26);
+  border-radius: 4px;
+  white-space: normal;
+  width:100%;
+}
+
+.form-item > .validated-field:invalid {
+  border: 2px solid red;
+}
+
+.form-item > .validated-field:valid {
+  border: 2px solid greenyellow;
+}
+
+.locale {
+  min-width:120px;
+  padding:20px;
+}
+
+}
