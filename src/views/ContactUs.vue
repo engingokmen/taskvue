@@ -93,9 +93,6 @@ export default {
       })
     };
   },
-  mounted() {
-    console.log(this.userInfo);
-  },
   methods: {
     checkForm: function(e) {
       e.preventDefault();
